@@ -54,7 +54,7 @@ dependencies {
 	compile "com.jme3:jme3-core:$jmonkeyengine_version"
 	compile "com.jme3:jme3-desktop:$jmonkeyengine_version"
 	compile "com.jme3:jme3-lwjgl:$jmonkeyengine_version"
-	compile 'com.github.meltzow:tonegodgui:-SNAPSHOT'
+	compile 'com.github.brainless-studios:tonegodgui:-SNAPSHOT'
 	
 	
 }
@@ -84,7 +84,7 @@ eclipse.classpath.file {
 sourceSets {
 	main {
 		java { srcDir 'src'}
-		resources { srcDir 'src' }
+		resources { srcDir 'assets' }
 	}
 	test {
 		java { srcDir 'test/java' }
