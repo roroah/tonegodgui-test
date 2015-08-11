@@ -1,4 +1,4 @@
 # tonegodgui-test
 
 
-![My image](brainless-studios.github.com/tonegod-gui/doc/screenshot1.png)
+![My image](https://github.com/brainless-studios/tonegodgui-test/blob/master/doc/screenshot1.png)
