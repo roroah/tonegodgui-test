@@ -2,6 +2,7 @@ package tonegod.gui.tests.states.emitter;
 
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector2f;
+import com.jme3.scene.Spatial;
 import tonegod.gui.controls.extras.android.Joystick;
 import tonegod.gui.controls.extras.emitter.AlphaInfluencer;
 import tonegod.gui.controls.extras.emitter.ColorInfluencer;
@@ -90,6 +91,10 @@ public class EmitterState extends AppStateCommon {
 						break;
 				}
 			}
+
+                    @Override
+                    public void setSpatial(Spatial sptl) {
+                    }
 		};
 		cPanel.getContentArea().addChild(joystick);
 		

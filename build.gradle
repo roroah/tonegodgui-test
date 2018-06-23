@@ -4,20 +4,22 @@ apply plugin: 'eclipse'
 apply plugin: "idea"
 apply plugin: 'maven'
 
+description = 'Tonegod\'s graphical user-interface test library'
+group = 'tonegod'
+version = '0.1.0'
 
-version = '0.0.1'
 ext {
 		appName = 'tonegodgui-test'
-		jmonkeyengine_version = '3.0.10'
+		jmonkeyengine_version = 'v3.2.1-stable'
 }
 	sourceCompatibility = 1.8
 
 	repositories {
 		mavenLocal()
 		mavenCentral()
-		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-		maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-		maven { url 'http://updates.jmonkeyengine.org/maven' }		
+//		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+//		maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+//		maven { url 'http://updates.jmonkeyengine.org/maven' }		
 		maven { url "https://jitpack.io" }
 	}
 
@@ -30,10 +32,10 @@ if (!hasProperty('mainClass')) {
 dependencies {
 	compile fileTree(dir: 'lib', include: ['*.jar'])
 
-	compile "com.jme3:jme3-core:$jmonkeyengine_version"
-	compile "com.jme3:jme3-desktop:$jmonkeyengine_version"
-	compile "com.jme3:jme3-lwjgl:$jmonkeyengine_version"
-	compile 'com.github.brainless-studios:tonegodgui:-SNAPSHOT'
+	compile "com.github.jMonkeyEngine.jMonkeyEngine:jme3-core:$jmonkeyengine_version"
+	compile "com.github.jMonkeyEngine.jMonkeyEngine:jme3-desktop:$jmonkeyengine_version"
+	compile "com.github.jMonkeyEngine.jMonkeyEngine:jme3-lwjgl:$jmonkeyengine_version"
+	compile 'com.github.roroah:tonegodgui:master-SNAPSHOT'
 	
 	
 }
@@ -103,6 +105,23 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 	classifier = 'javadoc'
 	from javadoc.destinationDir
 }
+
+task pom {
+    doLast {
+        pom {
+            project {
+                licenses {
+                    license {
+                        distribution 'repo'
+                        name 'FreeBSD License'
+                        url 'https://opensource.org/licenses/BSD-2-Clause'
+                    }
+                }
+            }
+        }.writeTo("${buildDir}/libs/tonegodgui-${version}.pom")
+    }
+}
+build { dependsOn 'pom' }
 
 // add javadoc/source jar tasks as artifacts
 artifacts {
